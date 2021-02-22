@@ -30,5 +30,8 @@ build-mocks:
 test:
 	go test -tags testing ./...
 
+run-api:
+	./bin/api
+
 fmt: ## gofmt and goimports all go files
 	find . -name '*.go' -not -wholename './vendor/*' | while read -r file; do gofmt -w -s "$$file"; goimports -w "$$file"; done
