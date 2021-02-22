@@ -3,7 +3,7 @@ REST API for Feedback App written in Go
 
 # Entities
 ## Template
-Template is used to store shared information when creating feedback for students. For example, if a class is taught and the teach has already written feedback for that class, a template can be created so that the same format can be used for different students. A template consists of the following properties:
+Template is used to store shared information when creating feedback for students. For example, if a class is taught and the teacher has already written feedback for that class, a template can be created so that the same format can be used for different students. A template consists of the following properties:
 ```
 {
   "class": "string", // Class ID
