@@ -1,13 +1,31 @@
 # feedback-api
 REST API for Feedback App written in Go
 
-# Build
+# Local Development
+## Build
 ```
 make
 ```
-# Run
+## Run
 ```
 make run-api
+```
+
+## Run Unit Tests
+```
+make test
+```
+
+# Docker
+The docker environment spins up a postgres database as well as the API to listen on port 8080
+## Build
+```
+docker-compose build
+```
+
+## Run
+```
+docker-compose up
 ```
 
 # Entities
@@ -23,11 +41,11 @@ Template is used to store shared information when creating feedback for students
 # API
 ## Template
 ```
-  GET     /v1/template
-  GET     /v1/template/{id}
-  POST    /v1/template
-  PUT     /v1/template
-  DELETE  /v1/template/{id}
+  GET     /v1/templates
+  GET     /v1/templates/{id}
+  POST    /v1/templates
+  PUT     /v1/templates
+  DELETE  /v1/templates/{id}
 ```
 
 # Project structure
