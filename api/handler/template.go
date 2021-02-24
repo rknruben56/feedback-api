@@ -19,8 +19,7 @@ func listTemplates(service template.UseCase) http.Handler {
 			return
 		}
 		if data == nil {
-			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte(errorMessage))
+			respondWithStatusNotFound(w, errorMessage)
 			return
 		}
 
@@ -54,8 +53,7 @@ func getTemplate(service template.UseCase) http.Handler {
 			return
 		}
 		if data == nil {
-			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte(errorMessage))
+			respondWithStatusNotFound(w, errorMessage)
 			return
 		}
 		toJ := &presenter.Template{
@@ -125,8 +123,7 @@ func updateTemplate(service template.UseCase) http.Handler {
 			return
 		}
 		if data == nil {
-			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte(errorMessage))
+			respondWithStatusNotFound(w, errorMessage)
 			return
 		}
 		data.Class = input.Class
@@ -158,6 +155,11 @@ func deleteTemplate(service template.UseCase) http.Handler {
 
 func respondWithInternalServerError(w http.ResponseWriter, errorMessage string) {
 	w.WriteHeader(http.StatusInternalServerError)
+	w.Write([]byte(errorMessage))
+}
+
+func respondWithStatusNotFound(w http.ResponseWriter, errorMessage string) {
+	w.WriteHeader(http.StatusNotFound)
 	w.Write([]byte(errorMessage))
 }
 
