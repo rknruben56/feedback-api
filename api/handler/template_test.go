@@ -29,7 +29,7 @@ func Test_ListTemplates(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Get("/v1/template").
+		Get("/v1/templates").
 		Expect(t).
 		Status(http.StatusOK).
 		End()
@@ -48,7 +48,7 @@ func Test_ListTemplates_NotFound(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Get("/v1/template").
+		Get("/v1/templates").
 		Expect(t).
 		Status(http.StatusNotFound).
 		End()
@@ -70,7 +70,7 @@ func Test_GetTemplate(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Getf("/v1/template/%s", temp.ID.String()).
+		Getf("/v1/templates/%s", temp.ID.String()).
 		Expect(t).
 		Status(http.StatusOK).
 		End()
@@ -92,7 +92,7 @@ func Test_GetTemplate_ServerError(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Getf("/v1/template/%s", temp.ID.String()).
+		Getf("/v1/templates/%s", temp.ID.String()).
 		Expect(t).
 		Status(http.StatusInternalServerError).
 		End()
@@ -114,7 +114,7 @@ func Test_GetTemplate_NotFound(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Getf("/v1/template/%s", temp.ID.String()).
+		Getf("/v1/templates/%s", temp.ID.String()).
 		Expect(t).
 		Status(http.StatusNotFound).
 		End()
@@ -133,7 +133,7 @@ func Test_ListTemplates_ServerError(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Get("/v1/template").
+		Get("/v1/templates").
 		Expect(t).
 		Status(http.StatusInternalServerError).
 		End()
@@ -152,7 +152,7 @@ func Test_CreateTemplate(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Post("/v1/template").
+		Post("/v1/templates").
 		Body(`{"class": "Class123", "content": "[Student] is doing well"}`).
 		Expect(t).
 		Status(http.StatusCreated).
@@ -172,7 +172,7 @@ func Test_CreateTemplate_ServerError(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Post("/v1/template").
+		Post("/v1/templates").
 		Body(`{"class": "Class123", "content": "[Student] is doing well"}`).
 		Expect(t).
 		Status(http.StatusInternalServerError).
@@ -200,7 +200,7 @@ func Test_UpdateTemplate(t *testing.T) {
 	body := fmt.Sprintf(`{"id": "%s", "class": "Class123", "content": "[Student] is doing well"}`, temp.ID.String())
 	apitest.New().
 		Handler(r).
-		Put("/v1/template").
+		Put("/v1/templates").
 		Body(body).
 		Expect(t).
 		Status(http.StatusOK).
@@ -224,7 +224,7 @@ func Test_UpdateTemplate_GetError(t *testing.T) {
 	body := fmt.Sprintf(`{"id": "%s", "class": "Class123", "content": "[Student] is doing well"}`, temp.ID.String())
 	apitest.New().
 		Handler(r).
-		Put("/v1/template").
+		Put("/v1/templates").
 		Body(body).
 		Expect(t).
 		Status(http.StatusInternalServerError).
@@ -248,7 +248,7 @@ func Test_UpdateTemplate_NotFound(t *testing.T) {
 	body := fmt.Sprintf(`{"id": "%s", "class": "Class123", "content": "[Student] is doing well"}`, temp.ID.String())
 	apitest.New().
 		Handler(r).
-		Put("/v1/template").
+		Put("/v1/templates").
 		Body(body).
 		Expect(t).
 		Status(http.StatusNotFound).
@@ -276,7 +276,7 @@ func Test_UpdateTemplate_UpdateError(t *testing.T) {
 	body := fmt.Sprintf(`{"id": "%s", "class": "Class123", "content": "[Student] is doing well"}`, temp.ID.String())
 	apitest.New().
 		Handler(r).
-		Put("/v1/template").
+		Put("/v1/templates").
 		Body(body).
 		Expect(t).
 		Status(http.StatusInternalServerError).
@@ -296,7 +296,7 @@ func Test_DeleteTemplate(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Deletef("/v1/template/%s", temp.ID.String()).
+		Deletef("/v1/templates/%s", temp.ID.String()).
 		Expect(t).
 		Status(http.StatusOK).
 		End()
@@ -318,7 +318,7 @@ func Test_DeleteTemplate_ServerError(t *testing.T) {
 
 	apitest.New().
 		Handler(r).
-		Deletef("/v1/template/%s", temp.ID.String()).
+		Deletef("/v1/templates/%s", temp.ID.String()).
 		Expect(t).
 		Status(http.StatusInternalServerError).
 		End()

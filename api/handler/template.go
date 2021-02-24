@@ -162,19 +162,19 @@ func respondWithInternalServerError(w http.ResponseWriter, errorMessage string) 
 }
 
 func MakeTemplateHandlers(r *mux.Router, service template.UseCase) {
-	r.Handle("/v1/template", listTemplates(service)).
+	r.Handle("/v1/templates", listTemplates(service)).
 		Methods("GET", "OPTIONS").
 		Name("listTemplates")
-	r.Handle("/v1/template/{id}", getTemplate(service)).
+	r.Handle("/v1/templates/{id}", getTemplate(service)).
 		Methods("GET", "OPTIONS").
 		Name("getTemplate")
-	r.Handle("/v1/template", createTemplate(service)).
+	r.Handle("/v1/templates", createTemplate(service)).
 		Methods("POST", "OPTIONS").
 		Name("createTemplate")
-	r.Handle("/v1/template", updateTemplate(service)).
+	r.Handle("/v1/templates", updateTemplate(service)).
 		Methods("PUT", "OPTIONS").
 		Name("updateTemplate")
-	r.Handle("/v1/template/{id}", deleteTemplate(service)).
+	r.Handle("/v1/templates/{id}", deleteTemplate(service)).
 		Methods("DELETE", "OPTIONS").
 		Name("deleteTemplate")
 }
