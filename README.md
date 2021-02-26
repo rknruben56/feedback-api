@@ -1,5 +1,13 @@
 # feedback-api
-REST API for Feedback App written in Go
+REST API for Feedback App written in Go. To learn more, read below
+
+- [Local Development](#local-development)
+- [Docker](#docker)
+- [Entities](#entities)
+- [API](#api)
+- [Database](#database)
+- [Project Structure](#project-structure)
+
 
 # Local Development
 ## Build
@@ -48,5 +56,14 @@ Template is used to store shared information when creating feedback for students
   DELETE  /v1/templates/{id}
 ```
 
+# Database
+## Migrations
+Migrations for updating the postgres db is handled using Robert's [pgmgr](https://github.com/rnubel/pgmgr) utility. The migration scripts can be found under `ops/db/migrate`
+
 # Project structure
-This project follows the structure described in Elton Minetto's great blog: [Clean Architecture, 2 years later ](https://eltonminetto.dev/en/post/2020-07-06-clean-architecture-2years-later/) 
+This project follows the structure described in Elton Minetto's great blog: [Clean Architecture, 2 years later ](https://eltonminetto.dev/en/post/2020-07-06-clean-architecture-2years-later/)
+
+- `/entity` holds the models and their core business logic
+- `/usecase` holds the overall usecases for the app and structures them as services
+- `/api` contains the api-specific logic to run the app (handlers, middleware, router, etc...)
+- `/ops` handles any platform operations
