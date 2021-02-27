@@ -13,7 +13,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o main api/main.go
+RUN go build -tags dev -o main api/main.go
 
 WORKDIR /dist
 

@@ -66,6 +66,6 @@ func (s *Service) UpdateTemplate(e *entity.Template) error {
 	if err != nil {
 		return err
 	}
-	e.UpdatedAt = time.Now()
+	e.UpdatedAt.Time = time.Now()
 	return s.repo.Update(e)
 }

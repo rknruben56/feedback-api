@@ -17,7 +17,7 @@ func newFixtureTemplate() *entity.Template {
 }
 
 func Test_Create(t *testing.T) {
-	repo := NewInmem()
+	repo := newInmem()
 	s := NewService(repo)
 	e := newFixtureTemplate()
 
@@ -28,7 +28,7 @@ func Test_Create(t *testing.T) {
 }
 
 func Test_List(t *testing.T) {
-	repo := NewInmem()
+	repo := newInmem()
 	s := NewService(repo)
 	e1 := newFixtureTemplate()
 	e2 := newFixtureTemplate()
@@ -41,7 +41,7 @@ func Test_List(t *testing.T) {
 }
 
 func Test_Update(t *testing.T) {
-	repo := NewInmem()
+	repo := newInmem()
 	s := NewService(repo)
 	e := newFixtureTemplate()
 	id, err := s.CreateTemplate(e.Class, e.Content)
@@ -57,7 +57,7 @@ func Test_Update(t *testing.T) {
 }
 
 func Test_Delete(t *testing.T) {
-	repo := NewInmem()
+	repo := newInmem()
 	s := NewService(repo)
 	e1 := newFixtureTemplate()
 	e2 := newFixtureTemplate()

@@ -1,13 +1,16 @@
 package entity
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
 
 type Template struct {
 	ID        ID
 	Class     string
 	Content   string
 	CreatedAt time.Time
-	UpdatedAt time.Time
+	UpdatedAt sql.NullTime
 }
 
 // NewTemplate creates a new template

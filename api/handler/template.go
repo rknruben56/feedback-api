@@ -2,6 +2,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -15,6 +16,7 @@ func listTemplates(service template.UseCase) http.Handler {
 		errorMessage := "Error reading templates"
 		data, err := service.ListTemplates()
 		if err != nil && err != entity.ErrNotFound {
+			fmt.Println(err.Error())
 			respondWithInternalServerError(w, errorMessage)
 			return
 		}
@@ -33,6 +35,7 @@ func listTemplates(service template.UseCase) http.Handler {
 			})
 		}
 		if err := json.NewEncoder(w).Encode(toJ); err != nil {
+			fmt.Println(err.Error())
 			respondWithInternalServerError(w, errorMessage)
 		}
 	})

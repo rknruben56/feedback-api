@@ -8,8 +8,7 @@ type inmem struct {
 }
 
 // newInmem creates a new repository
-// TODO: make private
-func NewInmem() *inmem {
+func newInmem() *inmem {
 	var m = map[entity.ID]*entity.Template{}
 	return &inmem{
 		m: m,
