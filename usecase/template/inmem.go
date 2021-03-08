@@ -1,6 +1,10 @@
 package template
 
-import "github.com/rknruben56/feedback-api/entity"
+import (
+	"strings"
+
+	"github.com/rknruben56/feedback-api/entity"
+)
 
 // inmem in memory repository
 type inmem struct {
@@ -55,4 +59,16 @@ func (r *inmem) Delete(id entity.ID) error {
 	}
 	r.m[id] = nil
 	return nil
+}
+
+// Search templates
+func (r *inmem) Search(query string) ([]*entity.Template, error) {
+	var d []*entity.Template
+	for _, j := range r.m {
+		if strings.Contains(strings.ToLower(j.Class), query) || strings.Contains(strings.ToLower(j.Content), query) {
+			d = append(d, j)
+		}
+	}
+
+	return d, nil
 }

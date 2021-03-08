@@ -6,6 +6,7 @@ import "github.com/rknruben56/feedback-api/entity"
 type Reader interface {
 	Get(id entity.ID) (*entity.Template, error)
 	List() ([]*entity.Template, error)
+	Search(query string) ([]*entity.Template, error)
 }
 
 // Writer...
@@ -28,4 +29,5 @@ type UseCase interface {
 	CreateTemplate(class string, content string) (entity.ID, error)
 	UpdateTemplate(e *entity.Template) error
 	DeleteTemplate(id entity.ID) error
+	SearchTemplates(query string) ([]*entity.Template, error)
 }

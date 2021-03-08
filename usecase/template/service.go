@@ -1,6 +1,7 @@
 package template
 
 import (
+	"strings"
 	"time"
 
 	"github.com/rknruben56/feedback-api/entity"
@@ -68,4 +69,16 @@ func (s *Service) UpdateTemplate(e *entity.Template) error {
 	}
 	e.UpdatedAt.Time = time.Now()
 	return s.repo.Update(e)
+}
+
+// SearchTemplates ...
+func (s *Service) SearchTemplates(query string) ([]*entity.Template, error) {
+	templates, err := s.repo.Search(strings.ToLower(query))
+	if err != nil {
+		return nil, err
+	}
+	if len(templates) == 0 {
+		return nil, entity.ErrNotFound
+	}
+	return templates, nil
 }

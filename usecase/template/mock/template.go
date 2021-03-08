@@ -64,6 +64,21 @@ func (mr *MockReaderMockRecorder) List() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockReader)(nil).List))
 }
 
+// Search mocks base method.
+func (m *MockReader) Search(query string) ([]*entity.Template, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Search", query)
+	ret0, _ := ret[0].([]*entity.Template)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Search indicates an expected call of Search.
+func (mr *MockReaderMockRecorder) Search(query interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Search", reflect.TypeOf((*MockReader)(nil).Search), query)
+}
+
 // MockWriter is a mock of Writer interface.
 type MockWriter struct {
 	ctrl     *gomock.Controller
@@ -212,6 +227,21 @@ func (mr *MockRepositoryMockRecorder) List() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockRepository)(nil).List))
 }
 
+// Search mocks base method.
+func (m *MockRepository) Search(query string) ([]*entity.Template, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Search", query)
+	ret0, _ := ret[0].([]*entity.Template)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Search indicates an expected call of Search.
+func (mr *MockRepositoryMockRecorder) Search(query interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Search", reflect.TypeOf((*MockRepository)(nil).Search), query)
+}
+
 // Update mocks base method.
 func (m *MockRepository) Update(e *entity.Template) error {
 	m.ctrl.T.Helper()
@@ -306,6 +336,21 @@ func (m *MockUseCase) ListTemplates() ([]*entity.Template, error) {
 func (mr *MockUseCaseMockRecorder) ListTemplates() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTemplates", reflect.TypeOf((*MockUseCase)(nil).ListTemplates))
+}
+
+// SearchTemplates mocks base method.
+func (m *MockUseCase) SearchTemplates(query string) ([]*entity.Template, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "SearchTemplates", query)
+	ret0, _ := ret[0].([]*entity.Template)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// SearchTemplates indicates an expected call of SearchTemplates.
+func (mr *MockUseCaseMockRecorder) SearchTemplates(query interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchTemplates", reflect.TypeOf((*MockUseCase)(nil).SearchTemplates), query)
 }
 
 // UpdateTemplate mocks base method.
